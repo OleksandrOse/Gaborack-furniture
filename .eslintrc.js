@@ -8,7 +8,7 @@ module.exports = {
     'react/prop-types': 0,
     'react/self-closing-comp': 0,
     'react/display-name': 0,
-
+    'react/react-in-jsx-scope': 0,
     // JavaScript
     semi: 0,
     'no-proto': 0,
@@ -16,7 +16,7 @@ module.exports = {
 
     // TypeScript
     '@typescript-eslint/no-unused-vars': ['error'],
-    '@typescript-eslint/camelcase': 0,
+    '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 0,
     '@typescript-eslint/ban-types': 0,
     '@typescript-eslint/semi': ['error'],
