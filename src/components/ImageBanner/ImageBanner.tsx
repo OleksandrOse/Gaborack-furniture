@@ -8,12 +8,9 @@ type Props = {
 };
 
 export const ImageBanner: FC<Props> = ({ activeBanner, image, index }) => {
-  // eslint-disable-next-line no-console
-  console.log(image);
-
   return (
     <img
-      src="images/photos/25.jpg"
+      src={image}
       alt={image}
       className={classNames(
         'banner__img',
