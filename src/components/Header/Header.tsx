@@ -1,7 +1,6 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable jsx-a11y/anchor-has-content */
 import { FC } from 'react';
 import './Header.scss';
+import { Logo } from '../Logo/Logo';
 
 export const Header: FC = () => {
   return (
@@ -9,7 +8,8 @@ export const Header: FC = () => {
       <div className="header__container">
         <div className="header__content">
           <div className="header__top">
-            <a href="#logo" className="logo">
+            <Logo />
+            {/* <a href="#logo" className="logo">
               <span className="logo">
                 <svg
                   width="40"
@@ -59,7 +59,7 @@ export const Header: FC = () => {
                   />
                 </svg>
               </span>
-            </a>
+            </a> */}
 
             <a href="tel: +1 647 773-62-73" className="icon icon--phone">
               <div className="icon__tooltip">+1 647 773-62-73</div>

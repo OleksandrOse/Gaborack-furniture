@@ -18,6 +18,7 @@
 }
 
 @mixin top-actions {
+  --logo--width: 90px;
   --icon-width: 18px;
   display: grid;
   grid-template-columns: 1fr var(--icon-width) var(--icon-width);
