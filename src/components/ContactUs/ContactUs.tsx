@@ -192,7 +192,7 @@ export const ContactUs: React.FC = () => {
                   {errorBody && 'Enter your message'}
                   {warning && 'Something went wrong, try again'}
                 </p>
-                <p className="help is-danger" data-cy="ErrorMessage">
+                <p className="help is-submit" data-cy="ErrorMessage">
                   {submitting && 'Your message has been sent, we will definitely contact you.'}
                 </p>
               </div>

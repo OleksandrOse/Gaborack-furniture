@@ -111,19 +111,18 @@
   display: block;
   font-size: 0.75rem;
   margin: 0;
-  ///padding: 0.25rem;
-  // margin-bottom: 0.25rem;
-  // margin-top: 0.25rem;
-box-sizing: inherit;
-text-rendering: optimizeLegibility;
-text-size-adjust: 100%;
-  //   margin-block-start: 1em;
-  //  margin-block-end: 1em;
+  box-sizing: inherit;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 }
 
 .is-danger {
   color: #f14668;
+}
+
+.is-submit {
+  color: #008000;
 }
 
