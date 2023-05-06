@@ -3,6 +3,10 @@
 .menu {
   background-color: $color-gray;
 
+  &--visible {
+    transform: translateX(0);
+  }
+
   &__container {
     @include container;
   }
@@ -16,7 +20,11 @@
 
   &__top {
     @include top-actions;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
+
+    @include onDekstop {
+      margin-bottom: 100px;
+    }
   }
 
   &__list {

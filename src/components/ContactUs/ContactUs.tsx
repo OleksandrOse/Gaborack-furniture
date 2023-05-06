@@ -1,8 +1,124 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { send } from 'emailjs-com';
+import classNames from 'classnames';
+
 import './ContactUs.scss';
+import { warningTimer } from '../../helpers/warningTimer';
 
 export const ContactUs: React.FC = () => {
+  const [submitting, setSubmitting] = useState(false);
+  const [isValidEmail, setIsValidEmail] = useState(false);
+  const [warning, setWarning] = useState(false);
+
+  const [touched, setToched] = useState({
+    name: false,
+    email: false,
+    body: false,
+  });
+
+  const [errors, setErrors] = useState({
+    name: false,
+    email: false,
+    body: false,
+  });
+
+  const [values, setValues] = useState({
+    name: '',
+    email: '',
+    body: '',
+  });
+
+  const { name, email, body } = values;
+
+  const clearForm = () => {
+    setValues({
+      name: '',
+      email: '',
+      body: '',
+    });
+
+    setErrors({
+      name: false,
+      email: false,
+      body: false,
+    });
+  };
+
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name: field, value } = event.target;
+
+    setValues(current => ({ ...current, [field]: value }));
+    setErrors(current => ({ ...current, [field]: false }));
+    setToched(current => ({ ...current, [field]: false }));
+  };
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    setErrors({
+      name: !name,
+      email: !email,
+      body: !body,
+    });
+
+    if (!name.trim() || !email.trim() || !body.trim()) {
+      return;
+    }
+
+    send(
+      "service_8h3lzq6",
+      "template_zyfxasb",
+      values,
+      "Z10Puj4no99H3y9KI",
+    )
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
+      setSubmitting(true);
+      warningTimer(setSubmitting, false, 3000);
+
+      setValues({
+        name: '',
+        email: '',
+        body: '',
+      });
+    })
+    .catch(() => {
+      setWarning(true);
+      warningTimer(setWarning, false, 3000);
+
+      setValues(current => ({ ...current, body: '' }));
+    });
+  };
+
+  const handleBlur = (value: string, field: string) => {
+    if (!value.trim().length) {
+      setToched(current => ({
+        ...current,
+        [field]: true,
+      }));
+    }
+  };
+
+  const errorName = touched.name || errors.name;
+  const errorEmail = touched.email || errors.email;
+  const errorBody = touched.body || errors.body;
+
+  const validateFields = (text: string) => {
+    // eslint-disable-next-line max-len
+    const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    return !pattern.test(text);
+  };
+
+  useEffect(() => {
+    if (email.length) {
+      setIsValidEmail(validateFields(email));
+    }
+  }, [touched]);
+
   return (
     <section className="page__section contact-us" id="contact-us">
       <div className="contact-us__container">
@@ -19,37 +135,75 @@ export const ContactUs: React.FC = () => {
             "
           >
             <form
-              onSubmit={(e) => e.preventDefault()}
-              action="#"
+              onSubmit={handleSubmit}
+              onReset={clearForm}
               className="contact-us__form"
             >
               <input
                 name="name"
                 type="text"
-                className="contact-us__field form-field"
+                className={classNames(
+                  "form-field",
+                  { 'is-danger': errorName },
+                )}
                 placeholder="Name"
-                required
+                value={name}
+                onChange={handleChange}
+                onBlur={() => handleBlur(name, 'name')}
               />
+
+              <div className="contact-us__distance">
+                <p className="help is-danger" data-cy="ErrorMessage">
+                  {errorName && 'Name is required'}
+                </p>
+              </div>
+
               <input
                 name="email"
                 type="email"
-                className="contact-us__field form-field"
+                className="form-field"
                 placeholder="E-mail"
-                required
+                value={email}
+                onChange={handleChange}
+                onBlur={() => handleBlur(email, 'email')}
               />
+
+              <div className="contact-us__distance">
+                <p className="help is-danger" data-cy="ErrorMessage">
+                  {errorEmail && 'Email is required'}
+                  {isValidEmail && !errorEmail && 'Email is not valid'}
+                </p>
+              </div>
+
               <textarea
-                name="message"
+                name="body"
                 className="
-                  contact-us__field
-                  contact-us__field--last
                   form-field
                   form-field-textarea
                 "
                 placeholder="Message"
-                required
+                value={body}
+                onChange={handleChange}
+                onBlur={() => handleBlur(body, 'body')}
               />
 
-              <button type="submit" className="button">
+              <div className="contact-us__distance contact-us__distance--last">
+                <p className="help is-danger" data-cy="ErrorMessage">
+                  {errorBody && 'Enter your message'}
+                  {warning && 'Something went wrong, try again'}
+                </p>
+                <p className="help is-danger" data-cy="ErrorMessage">
+                  {submitting && 'Your message has been sent, we will definitely contact you.'}
+                </p>
+              </div>
+
+              <button
+                type="submit"
+                className={classNames(
+                  "button",
+                  { 'is-loading': submitting },
+                )}
+              >
                 Send
               </button>
             </form>

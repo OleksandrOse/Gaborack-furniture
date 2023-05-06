@@ -14,12 +14,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
+    gap: 3px;
   }
 
   &__button {
     width: 32px;
-    height: 400px;
+    height: 500px;
     color: $color-black;
     background-color: $color-white;
     outline: none;
@@ -38,7 +38,7 @@
   }
 
   &__image {
-    height: 400px;
+    height: 500px;
     width: 1040px;
     position: relative;
   

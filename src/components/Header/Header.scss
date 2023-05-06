@@ -6,6 +6,21 @@
   background-size: cover;
   background-image: url(../../images/26.jpg);
 
+  &--kitchen {
+    background-image: url(../../images/photos/23-6.jpg);
+  }
+
+  &--living {
+    background-image: url(../../images/Living-room/4.jpg);
+  }
+
+  &--bedroom {
+    background-image: url(../../images/Bedroom/1.jpg);
+  }
+
+  &--bathroom {
+    background-image: url(../../images/Bathroom/5.jpg);
+  }
   @include onTablet {
     background-position: center;
     background-size: cover;
@@ -30,7 +45,26 @@
   }
 
   &__top {
+    
+  }
+
+  &__top-container {
     @include top-actions;
+  }
+
+
+
+  &__navbar {
+    display: none;
+
+    @include onDekstop {
+      display: block;
+    }
+  }
+
+  &__top-content {
+    display: flex;
+    align-items: center;
   }
 
   &__title {

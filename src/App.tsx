@@ -1,19 +1,23 @@
 import React from 'react';
-import { Header } from './components/Header/Header';
-
+import { Outlet } from 'react-router-dom';
+import { MenuProvider } from './helpers/MenuProvider';
 import './App.scss';
-import { Main } from './components/Main/Main';
+import { Header } from './components/Header/Header';
 import { Menu } from './components/Menu/Menu';
+import { Footer } from './components/Footer/Footer';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <Header />
+    <MenuProvider>
+      <div className="App">
+        <Header />
 
-      <Menu />
+        <Menu />
+        <Outlet />
 
-      <Main />
-    </div>
+        <Footer />
+      </div>
+    </MenuProvider>
   );
 };
 

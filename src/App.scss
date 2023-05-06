@@ -12,6 +12,11 @@ html {
 body {
   margin: 0;
 }
+
+.isOverflow {
+  overflow: hidden;
+}
+
 .page {
   &--with-menu {
     overflow: hidden;
@@ -25,10 +30,6 @@ body {
 
     transform: translate((-100%));
     transition: transform 0.3s;
-
-    &:target {
-      transform: translateX(0);
-    }
   }
   
   &__main {

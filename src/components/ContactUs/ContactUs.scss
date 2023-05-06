@@ -33,11 +33,12 @@
     }
   }
 
-  &__field {
-    margin: 0 0 16px;
+  &__distance {
+    margin: 0;
+    height: 24px;
 
     &--last {
-      margin-bottom: 32px;
+      margin-bottom: 14px;
     }
   }
 }
@@ -104,5 +105,25 @@
   &:active {
     box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
   }
+}
+
+.help {
+  display: block;
+  font-size: 0.75rem;
+  margin: 0;
+  ///padding: 0.25rem;
+  // margin-bottom: 0.25rem;
+  // margin-top: 0.25rem;
+box-sizing: inherit;
+text-rendering: optimizeLegibility;
+text-size-adjust: 100%;
+  //   margin-block-start: 1em;
+  //  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.is-danger {
+  color: #f14668;
 }
 
