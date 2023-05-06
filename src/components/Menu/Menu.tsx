@@ -38,7 +38,9 @@ export const Menu: FC = () => {
         <div className="menu__content">
           <div className="menu__top">
             <div>
-              <Logo />
+              <span onClick={() => setIsMenuOpen(prev => !prev)}>
+                <Logo />
+              </span>
             </div>
 
             <a className="icon"></a>
@@ -50,16 +52,6 @@ export const Menu: FC = () => {
           </div>
 
           <ul className="menu__list">
-            <li className="menu__item">
-              <NavLink
-                aria-current="page"
-                className="menu__link"
-                to="/"
-                onClick={() => setIsMenuOpen(prev => !prev)}
-              >
-                Home
-              </NavLink>
-            </li>
             <li className="menu__item">
               <NavLink
                 aria-current="page"
