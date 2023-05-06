@@ -15,12 +15,13 @@
     box-sizing: border-box;
     height: 100vh;
     padding: $headerTopPadding 0;
+    margin-bottom: 20px
     
   }
 
   &__top {
     @include top-actions;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 
     @include onDekstop {
       margin-bottom: 100px;
