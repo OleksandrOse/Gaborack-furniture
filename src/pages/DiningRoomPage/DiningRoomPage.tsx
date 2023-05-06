@@ -48,7 +48,7 @@ export const DiningRoomPage: React.FC = () => {
                   Explore our wide selection of kitchen & dining room furniture including dining chairs and benches, dining tables, bar stools, buffets, bars, cabinets, complete dining sets and more. Whether your interior design style is modern, traditional, or contemporary, Gaborack offers dining room pieces to suit any taste
                 </p>
                 <p className="dining__paragraf">
-                  The dining room is the central meeting place for gathering friends and family, whether casual in nature or more formal, to delight in memorable meals, good conversation, and game nights. Design the inviting dining room of your dreams with luxury dining room furniture from Furniture.ca. Discover a wide selection of dining room tables, chairs, benches, sideboards, and more to wine and dine in style. Serve up your dream space and wow your guests.
+                  The dining room is the central meeting place for gathering friends and family, whether casual in nature or more formal, to delight in memorable meals, good conversation, and game nights. Design the inviting dining room of your dreams with luxury dining room furniture from Gaborack. Discover a wide selection of dining room tables, chairs, benches, sideboards, and more to wine and dine in style. Serve up your dream space and wow your guests.
                 </p>
               </div>
             </div>
