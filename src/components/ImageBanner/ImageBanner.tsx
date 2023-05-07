@@ -1,5 +1,4 @@
 import { FC, useState } from 'react';
-import { Finger } from 'react-finger';
 import classNames from 'classnames';
 
 type Props = {
@@ -20,7 +19,7 @@ export const ImageBanner: FC<Props> = ({
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
-  const minSwipeDistance = 50;
+  const minSwipeDistance = 10;
 
   const onTouchStart = (e: React.TouchEvent<HTMLImageElement>) => {
     setTouchEnd(0); // otherwise the swipe is fired even with usual touch events
@@ -40,23 +39,9 @@ export const ImageBanner: FC<Props> = ({
     if (isRightSwipe) {
       startBanner();
     }
-    // add your conditional logic here
   };
 
-  const FingerDiv = Finger('div');
-
   return (
-    <FingerDiv
-      // onTap={(e) => {
-      //   moveLeft();
-      //   console.log(e);
-      // }}
-      onSwipeRight={(e) => {
-        console.log(e);
-        moveLeft();
-      }}
-      onSwipeLeft={() => startBanner()}
-    >
       <img
         src={image}
         alt={image}
@@ -69,6 +54,5 @@ export const ImageBanner: FC<Props> = ({
         onTouchEnd={onTouchEnd}
         // onTouchMove={() => moveLeft()}
       />
-    </FingerDiv>
   );
 };
