@@ -35,6 +35,10 @@ body {
   &__main {
     padding: 60px 0 0;
     background-color: $color-black;
+
+    &--touch {
+      background-color: $color-white;
+    }
   }
 
   &__section {

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Banner } from "../../components/Banner/Banner";
 import { ContactUs } from "../../components/ContactUs/ContactUs";
 import { TouchContext } from "../../helpers/TouchProvider";
+import classNames from "classnames";
 
 export const KitchenPage: React.FC = () => {
   const { isTouchOpen } = useContext(TouchContext);
@@ -19,7 +20,12 @@ export const KitchenPage: React.FC = () => {
   ];
 
   return (
-    <div className='page'>
+    <div
+      className={classNames(
+        "page__main",
+        { "page__main--touch": isTouchOpen },
+      )}
+    >
       <main className="page__main">
         <section
           className="page__section about"
@@ -51,7 +57,7 @@ export const KitchenPage: React.FC = () => {
           </div>
         </section>
 
-        <Banner  imagesForBanner={imagesForBanner}/>
+        <Banner imagesForBanner={imagesForBanner} />
 
         <ContactUs />
       </main>

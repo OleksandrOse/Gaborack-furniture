@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Banner } from "../../components/Banner/Banner";
 import { ContactUs } from "../../components/ContactUs/ContactUs";
 import { TouchContext } from '../../helpers/TouchProvider';
+import classNames from 'classnames';
 
 export const LivingRoomPage = () => {
   const { isTouchOpen } = useContext(TouchContext);
@@ -21,7 +22,12 @@ export const LivingRoomPage = () => {
   ];
 
   return (
-    <div className='page'>
+    <div
+      className={classNames(
+        "page__main",
+        { "page__main--touch": isTouchOpen },
+      )}
+    >
       <main className="page__main">
         <section
           className="page__section about"

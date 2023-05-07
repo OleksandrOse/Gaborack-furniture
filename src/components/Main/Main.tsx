@@ -1,10 +1,13 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { About } from '../About/About';
 import { Banner } from '../Banner/Banner';
 import { BuyFrom } from '../BuyFrom/BuyFrom';
 import { ContactUs } from '../ContactUs/ContactUs';
+import { TouchContext } from '../../helpers/TouchProvider';
+import classNames from 'classnames';
 
 export const Main: FC = () => {
+  const { isTouchOpen } = useContext(TouchContext);
   const imagesForBanner = [
     // 'images/photos/25.jpg',
     // 'images/photos/17-6.jpg',
@@ -52,7 +55,12 @@ export const Main: FC = () => {
   ];
 
   return (
-    <main className="page__main">
+    <main
+      className={classNames(
+        "page__main",
+        { "page__main--touch": isTouchOpen },
+      )}
+    >
       <About />
       <Banner imagesForBanner={imagesForBanner} />
 
