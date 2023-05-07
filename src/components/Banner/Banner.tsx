@@ -77,6 +77,7 @@ export const Banner: React.FC<Props> = ({ imagesForBanner }) => {
                 image={image}
                 index={index}
                 moveLeft={moveLeft}
+                startBanner={startBanner}
               />
             ))}
           </div>

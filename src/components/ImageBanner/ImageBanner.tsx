@@ -7,6 +7,7 @@ type Props = {
   image: string;
   index: number;
   moveLeft: () => void;
+  startBanner: () => void;
 };
 
 export const ImageBanner: FC<Props> = ({
@@ -14,6 +15,7 @@ export const ImageBanner: FC<Props> = ({
   image,
   index,
   moveLeft,
+  startBanner,
 }) => {
   const FingerDiv = Finger('div');
 
@@ -27,6 +29,7 @@ export const ImageBanner: FC<Props> = ({
         console.log(e);
         moveLeft();
       }}
+      onSwipeLeft={() => startBanner()}
     >
       <img
         src={image}
@@ -35,7 +38,7 @@ export const ImageBanner: FC<Props> = ({
           'banner__img',
           { 'banner__img--active': activeBanner === index },
         )}
-        onTouchMove={() => moveLeft()}
+        // onTouchMove={() => moveLeft()}
       />
     </FingerDiv>
   );
