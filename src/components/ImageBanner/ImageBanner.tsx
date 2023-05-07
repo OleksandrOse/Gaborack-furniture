@@ -35,6 +35,7 @@ export const ImageBanner: FC<Props> = ({
           'banner__img',
           { 'banner__img--active': activeBanner === index },
         )}
+        onTouchMove={() => moveLeft()}
       />
     </FingerDiv>
   );
