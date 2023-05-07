@@ -1,9 +1,9 @@
 import React, {
   useCallback,
   useEffect,
-
   useState,
 } from 'react';
+
 import { ImageBanner } from '../ImageBanner/ImageBanner';
 // import {
 //   ButtonBannerPagination,
@@ -63,6 +63,7 @@ export const Banner: React.FC<Props> = ({ imagesForBanner }) => {
                 activeBanner={activeBanner}
                 image={image}
                 index={index}
+                setActiveBanner={setActiveBanner}
               />
             ))}
           </div>
