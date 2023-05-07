@@ -22,7 +22,7 @@ export const ImageBanner: FC<Props> = ({
   const minSwipeDistance = 10;
 
   const onTouchStart = (e: React.TouchEvent<HTMLImageElement>) => {
-    setTouchEnd(0); // otherwise the swipe is fired even with usual touch events
+    setTouchEnd(0);
     setTouchStart(e.targetTouches[0].clientX);
   };
   
@@ -52,7 +52,6 @@ export const ImageBanner: FC<Props> = ({
         onTouchStart={(e) => onTouchStart(e)}
         onTouchMove={(e) => onTouchMove(e)}
         onTouchEnd={onTouchEnd}
-        // onTouchMove={() => moveLeft()}
       />
   );
 };
