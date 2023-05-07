@@ -1,0 +1,65 @@
+@import "../../style/utils";
+
+.buy {
+  &__container {
+    @include container;
+  }
+
+  &__title {
+    margin: 0 0 32px;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 32px;
+    align-items: center;
+    letter-spacing: -1.5px;
+    color: $color-white;
+    
+    @include onTablet {
+      margin-bottom: 0;
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  &__svg {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__title-h4 {
+    margin: 0 0 24px;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 28px;
+    align-items: center;
+    letter-spacing: -1.5px;
+    color: $color-white;
+    
+    @include onTablet {
+      font-size: 36px;
+      line-height: 36px;
+    }
+  }
+
+  &__paragraf {
+    margin: 0 0 27px;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 32px;
+    align-items: center;
+    color: $color-white;
+  }
+
+  &__text {
+    margin: 0 0 27px;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 32px;
+    align-items: center;
+    color: $color-white;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

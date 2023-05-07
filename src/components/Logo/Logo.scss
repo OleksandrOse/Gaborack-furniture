@@ -1,0 +1,45 @@
+@import "../../style/utils";
+
+.logo {
+  width: 80px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: $color-placeholder;
+  background-color: $color-gray;
+  padding: 5px;
+  border-radius: 35px;
+  letter-spacing: 1px;
+  border: 2px solid black;
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__title {
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px black, 0 0 1em rgb(97, 97, 145), 0 0 0.2em rgb(74, 74, 88);
+    margin-bottom: 2px;
+  }
+
+  &__content {
+    font-size: 10px;
+    line-height: 10px;
+    font-weight: normal;
+    text-shadow: black 1px 0 10px;
+  };
+
+
+  &__image {
+    height: 38px;
+    
+
+    @include onTablet {
+      height: 56px;
+    }
+  }
+}

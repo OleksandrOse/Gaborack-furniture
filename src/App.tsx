@@ -1,27 +1,27 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
+import { MenuProvider } from './helpers/MenuProvider';
 import './App.scss';
+import { Header } from './components/Header/Header';
+import { Menu } from './components/Menu/Menu';
+import { Footer } from './components/Footer/Footer';
+import { TouchProvider } from './helpers/TouchProvider';
 
-interface Props {
-  onClick: () => void;
-}
-
-export const Provider: React.FC<Props> = React.memo(
-  ({ onClick, children }) => (
-    <button
-      type="button"
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  ),
-);
-
-export const App: React.FC = () => {
+const App: React.FC = () => {
   return (
-    <div className="starter">
-      <Provider onClick={() => ({})}>
-        <TodoList />
-      </Provider>
-    </div>
+    <MenuProvider>
+      <TouchProvider>
+        <div className="App">
+          <Header />
+
+          <Menu />
+          <Outlet />
+
+          <Footer />
+        </div>
+      </TouchProvider>
+    </MenuProvider>
   );
 };
+
+export default App;
