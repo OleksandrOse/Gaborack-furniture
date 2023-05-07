@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import './BuyFrom.scss';
+import { TouchContext } from '../../helpers/TouchProvider';
 
 export const BuyFrom: React.FC = () => {
+  const { isTouchOpen } = useContext(TouchContext);
+
   return (
-    <section className="page__section buy" id="buy">
+    <section
+      className="page__section buy"
+      id="buy"
+      hidden={isTouchOpen}
+    >
       <div className="buy__container">
         <div className="grid grid--tablet grid--dekstop">
           <div className="

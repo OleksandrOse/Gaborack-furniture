@@ -2,17 +2,16 @@ import React, {
   useCallback,
   useEffect,
   useState,
+  useContext,
 } from 'react';
 
 import { ImageBanner } from '../ImageBanner/ImageBanner';
-// import {
-//   ButtonBannerPagination,
-// } from '../ButtonBannerPagination/ButtonBannerPagination';
 import { ArrowLeft } from '../ArrowLeft/ArrowLeft';
 import { ArrowRight } from '../ArrowRight/ArrowRight';
 
 import './Banner.scss';
 import classNames from 'classnames';
+import { TouchContext } from '../../helpers/TouchProvider';
 
 type Props = {
   imagesForBanner: string[];
@@ -20,13 +19,8 @@ type Props = {
 
 export const Banner: React.FC<Props> = ({ imagesForBanner }) => {
   const [activeBanner, setActiveBanner] = useState(0);
-  const [touch, setTouch] = useState(false);
-  //const [firstElem, setFirstElem] = useState(0);
-
-  // const visibleButtons = useMemo(() => {
-  //   return imagesForBanner.slice(firstElem, firstElem + 5);
-  // }, [firstElem]);
-
+  // const [isTouchOpen, setIsTouchOpen] = useState(false);
+  const { isTouchOpen, setIsTouchOpen } = useContext(TouchContext);
 
   const startBanner = useCallback(() => {
     if (activeBanner === imagesForBanner.length - 1) {
@@ -59,6 +53,14 @@ export const Banner: React.FC<Props> = ({ imagesForBanner }) => {
     };
   }, [activeBanner, startBanner]);
 
+  useEffect(() => {
+    if (isTouchOpen) {
+      document.body.classList.add('page--with-menu');
+    } else {
+      document.body.classList.remove('page--with-menu');
+    }
+  }, [isTouchOpen]);
+
   return (
     <section className="page__section">
       <div className="banner">
@@ -68,7 +70,7 @@ export const Banner: React.FC<Props> = ({ imagesForBanner }) => {
           <div
             className={classNames(
               "banner__image",
-              { 'banner__image--full': touch }
+              { 'banner__image--full': isTouchOpen }
             )}
           >
             <button
@@ -92,7 +94,7 @@ export const Banner: React.FC<Props> = ({ imagesForBanner }) => {
 
             <span
               className='banner__resize'
-              onClick={() => setTouch(prev => !prev)}
+              onClick={() => setIsTouchOpen(prev => !prev)}
             >
               Click to change size
             </span>

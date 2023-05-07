@@ -5,18 +5,21 @@ import './App.scss';
 import { Header } from './components/Header/Header';
 import { Menu } from './components/Menu/Menu';
 import { Footer } from './components/Footer/Footer';
+import { TouchProvider } from './helpers/TouchProvider';
 
 const App: React.FC = () => {
   return (
     <MenuProvider>
-      <div className="App">
-        <Header />
+      <TouchProvider>
+        <div className="App">
+          <Header />
 
-        <Menu />
-        <Outlet />
+          <Menu />
+          <Outlet />
 
-        <Footer />
-      </div>
+          <Footer />
+        </div>
+      </TouchProvider>
     </MenuProvider>
   );
 };

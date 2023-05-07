@@ -6,12 +6,13 @@ import { MenuContext } from '../../helpers/MenuProvider';
 import { Navbar } from '../Navbar/NavBar';
 import classNames from 'classnames';
 import { Breadcrumbs } from '../BreadCrumbs/BreadCrumbs';
+import { TouchContext } from '../../helpers/TouchProvider';
 
 export const Header: FC = () => {
   const { isMenuOpen, setIsMenuOpen } = useContext(MenuContext);
+  const { isTouchOpen } = useContext(TouchContext);
   const { pathname } = useLocation();
   const path = pathname.slice(1);
-
   const title = path === '' ? 'furniture' : path.split('-').join(' ');
 
   useEffect(() => {
@@ -31,6 +32,7 @@ export const Header: FC = () => {
         { 'header--bedroom': path === 'bedroom' },
         { 'header--bathroom': path === 'bathroom' },
       )}
+      hidden={isTouchOpen}
     >
       <div className="header__container">
         <div className="header__content">

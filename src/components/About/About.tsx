@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './About.scss';
 
+import { TouchContext } from '../../helpers/TouchProvider';
+
 export const About: React.FC = () => {
+  const { isTouchOpen } = useContext(TouchContext);
+
   return (
-    <section className="page__section about" id="about-us">
+    <section
+      className="page__section about"
+      id="about-us"
+      hidden={isTouchOpen}
+    >
       <div className="about__container">
         <div className="grid grid--tablet grid--dekstop">
           <div className="

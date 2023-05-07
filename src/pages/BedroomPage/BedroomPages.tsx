@@ -1,7 +1,10 @@
+import { useContext } from 'react';
 import { Banner } from "../../components/Banner/Banner";
 import { ContactUs } from "../../components/ContactUs/ContactUs";
+import { TouchContext } from '../../helpers/TouchProvider';
 
 export const BedRoomPage = () => {
+  const { isTouchOpen } = useContext(TouchContext);
   const imagesForBanner = [
     'images/Bedroom/1.jpg',
   ];
@@ -9,7 +12,11 @@ export const BedRoomPage = () => {
   return (
     <div className='page'>
       <main className="page__main">
-        <section className="page__section about" id="about-us">
+        <section
+          className="page__section about"
+          id="about-us"
+          hidden={isTouchOpen}
+        >
           <div className="dining__container">
             <div className="grid grid--tablet grid--dekstop">
               <div className="
@@ -41,7 +48,11 @@ export const BedRoomPage = () => {
 
         <Banner imagesForBanner={imagesForBanner}/>
 
-        <section className="page__section about" id="about-us">
+        <section
+          className="page__section about"
+          id="about-us"
+          hidden={isTouchOpen}
+        >
           <div className="dining__container">
             <div className="grid grid--tablet grid--dekstop">
               <div className="

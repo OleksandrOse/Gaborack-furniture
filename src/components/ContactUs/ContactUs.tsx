@@ -1,15 +1,17 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { send } from 'emailjs-com';
 import classNames from 'classnames';
 
 import './ContactUs.scss';
 import { warningTimer } from '../../helpers/warningTimer';
+import { TouchContext } from '../../helpers/TouchProvider';
 
 export const ContactUs: React.FC = () => {
   const [submitting, setSubmitting] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [warning, setWarning] = useState(false);
+  const { isTouchOpen } = useContext(TouchContext);
 
   const [touched, setToched] = useState({
     name: false,
@@ -120,7 +122,11 @@ export const ContactUs: React.FC = () => {
   }, [touched]);
 
   return (
-    <section className="page__section contact-us" id="contact-us">
+    <section
+      className="page__section contact-us"
+      id="contact-us"
+      hidden={isTouchOpen}
+    >
       <div className="contact-us__container">
         <h2 className="page__section-title">
           Contact us

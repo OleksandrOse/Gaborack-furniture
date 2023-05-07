@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Banner } from "../../components/Banner/Banner";
 import { ContactUs } from "../../components/ContactUs/ContactUs";
+import { TouchContext } from "../../helpers/TouchProvider";
 
 export const KitchenPage: React.FC = () => {
+  const { isTouchOpen } = useContext(TouchContext);
   const imagesForBanner = [
     'images/Bathroom/1.jpg',
     'images/Bathroom/2.jpg',
@@ -19,7 +21,11 @@ export const KitchenPage: React.FC = () => {
   return (
     <div className='page'>
       <main className="page__main">
-        <section className="page__section about" id="about-us">
+        <section
+          className="page__section about"
+          id="about-us"
+          hidden={isTouchOpen}
+        >
           <div className="dining__container">
             <div className="grid grid--tablet grid--dekstop">
               <div className="

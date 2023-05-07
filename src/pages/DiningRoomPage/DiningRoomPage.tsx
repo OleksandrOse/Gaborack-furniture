@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Banner } from '../../components/Banner/Banner';
 import { ContactUs } from '../../components/ContactUs/ContactUs';
 import './DiningRoom.scss';
+import { TouchContext } from '../../helpers/TouchProvider';
 
 export const DiningRoomPage: React.FC = () => {
+  const { isTouchOpen } = useContext(TouchContext);
   const imagesForBanner = [
     'images/Dining-room/1.jpg',
     'images/Dining-room/2.jpg',
@@ -26,7 +28,11 @@ export const DiningRoomPage: React.FC = () => {
   return (
     <div className='page'>
       <main className="page__main">
-        <section className="page__section about" id="about-us">
+        <section
+          className="page__section about"
+          id="about-us"
+          hidden={isTouchOpen}
+        >
           <div className="dining__container">
             <div className="grid grid--tablet grid--dekstop">
               <div className="
@@ -44,7 +50,7 @@ export const DiningRoomPage: React.FC = () => {
             grid__item--tablet-1-6
             grid__item--dekstop-1-12"
               >
-                <p className="dining__paragraf">
+                <p className="dining__paragraf" >
                   Explore our wide selection of kitchen & dining room furniture including dining chairs and benches, dining tables, bar stools, buffets, bars, cabinets, complete dining sets and more. Whether your interior design style is modern, traditional, or contemporary, Gaborack offers dining room pieces to suit any taste
                 </p>
                 <p className="dining__paragraf">
@@ -57,7 +63,11 @@ export const DiningRoomPage: React.FC = () => {
 
         <Banner imagesForBanner={imagesForBanner}/>
 
-        <section className="page__section about" id="about-us">
+        <section
+          className="page__section about"
+          id="about-us"
+          hidden={isTouchOpen}
+        >
           <div className="dining__container">
             <div className="grid grid--tablet grid--dekstop">
               <div className="
