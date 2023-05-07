@@ -1,4 +1,4 @@
-import { FC, Dispatch, SetStateAction } from 'react';
+import { FC } from 'react';
 import { Finger } from 'react-finger';
 import classNames from 'classnames';
 
@@ -6,32 +6,36 @@ type Props = {
   activeBanner: number;
   image: string;
   index: number;
-  setActiveBanner: Dispatch<SetStateAction<number>>
+  moveLeft: () => void;
 };
 
-export const ImageBanner: FC<Props> = ({ activeBanner, image, index, setActiveBanner }) => {
-  // const events = createFingerEvents({
-  //   onSwipeLeft: event => {
-  //     setActiveBanner(prev => prev + 1);
-  //     console.log('onSwipeLeft',event);
-  //   },
-  // });
-const FingerDiv = Finger('div');
+export const ImageBanner: FC<Props> = ({
+  activeBanner,
+  image,
+  index,
+  moveLeft,
+}) => {
+  const FingerDiv = Finger('div');
+
   return (
     <FingerDiv
       onTap={(e) => {
+        moveLeft();
         console.log(e);
       }}
-      onSwipeRight={() => setActiveBanner(prev => prev + 1)}
+      onSwipeRight={(e) => {
+        console.log(e);
+        moveLeft();
+      }}
     >
-    <img
-      src={image}
-      alt={image}
-      className={classNames(
-        'banner__img',
-        { 'banner__img--active': activeBanner === index },
-      )}
-    />
+      <img
+        src={image}
+        alt={image}
+        className={classNames(
+          'banner__img',
+          { 'banner__img--active': activeBanner === index },
+        )}
+      />
     </FingerDiv>
   );
 };

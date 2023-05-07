@@ -27,13 +27,26 @@ export const Banner: React.FC<Props> = ({ imagesForBanner }) => {
   
 
   const startBanner = useCallback(() => {
-    if (activeBanner === imagesForBanner.length) {
+    if (activeBanner === imagesForBanner.length - 1) {
       setActiveBanner(0);
     } else {
-      setActiveBanner(activeBanner + 1);
+      setActiveBanner(prev => prev + 1);
     }
   }, [activeBanner]);
 
+  const moveLeft = useCallback(() => {
+    if (activeBanner === 0) {
+      console.log(activeBanner);
+      setActiveBanner(prev => {
+        prev = imagesForBanner.length - 1;
+        return prev;
+      });
+    } else {
+      console.log(2);
+      setActiveBanner(prev => prev - 1);
+    }
+  }, [activeBanner]);
+ 
   useEffect(() => {
     const timerId = setInterval(() => {
       startBanner();
@@ -51,7 +64,7 @@ export const Banner: React.FC<Props> = ({ imagesForBanner }) => {
           <button
             type="button"
             className="banner__button banner__button--left"
-            onClick={() => startBanner()}
+            onClick={() => moveLeft()}
           >
             <ArrowLeft />
           </button>
@@ -63,7 +76,7 @@ export const Banner: React.FC<Props> = ({ imagesForBanner }) => {
                 activeBanner={activeBanner}
                 image={image}
                 index={index}
-                setActiveBanner={setActiveBanner}
+                moveLeft={moveLeft}
               />
             ))}
           </div>
